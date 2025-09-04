@@ -1,0 +1,22 @@
+local gameScripts = {
+    [7546582051] = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/DungeonHeroes"))()
+    end,
+    [7436755782] = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/GAG"))()
+    end,
+    [6504986360] = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/BGSI"))()
+    end,
+}
+
+local scriptFunc = gameScripts[game.GameId]
+if scriptFunc then
+    scriptFunc()
+else
+    print("This Game is not Supported by ChickenHub!")
+    print("Current Supported Games are:")
+    print("- CH GAG")
+    print("- CH BGSI")
+    print("- CH Dungeon Heroes")
+end
