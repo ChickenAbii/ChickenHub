@@ -1,22 +1,28 @@
-local gameScripts = {
-    [7546582051] = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/DungeonHeroes"))()
-    end,
-    [7436755782] = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/GAG"))()
-    end,
-    [6504986360] = function()
-      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/BGSI"))()
-    end,
+if not game:IsLoaded() then
+    game.Loaded:Wait()
+end
+
+local currentPlaceId = game.PlaceId
+
+local placeLoaders = {
+    [127794225497302] = {
+        name = "Abyss",
+        execute = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/Abyss"))()
+        end,
+    },
 }
 
-local scriptFunc = gameScripts[game.GameId]
-if scriptFunc then
-    scriptFunc()
+local loader = placeLoaders[currentPlaceId]
+
+if loader then
+    local ok, err = pcall(loader.execute)
+    if not ok then
+        warn("[CH Main Loader] Failed to execute loader for " .. (loader.name or "Unknown") .. ": " .. tostring(err))
+    end
 else
-    print("This Game is not Supported by ChickenHub!")
-    print("Current Supported Games are:")
-    print("- CH GAG")
-    print("- CH BGSI")
-    print("- CH Dungeon Heroes")
+    print("=============================")
+    print("== your game is currently unsupported")
+    print("== placeId: " .. tostring(currentPlaceId))
+    print("=============================")
 end
