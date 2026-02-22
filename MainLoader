@@ -17,6 +17,12 @@ local placeLoaders = {
             loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/Flick"))()
         end,
     },
+    [130594398886540] = {
+        name = "GardenHorizons",
+        execute = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/ChickenAbii/ChickenHub/refs/heads/main/GardenHorizons"))()
+        end,
+    },
 }
 
 local loader = placeLoaders[currentPlaceId]
